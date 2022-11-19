@@ -1,7 +1,7 @@
 {
-    "name": "stanley-the-template-typescript",
-    "version": "0.0.0",
-    "description": "Stanley TheTemplate for typescript project",
+    "name": "@odg/log",
+    "version": "0.0.1",
+    "description": "Interface logs types",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "scripts": {
