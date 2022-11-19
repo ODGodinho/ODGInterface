@@ -8,6 +8,11 @@ import { LoggerInterface } from "./LoggerInterface";
 interface LoggerAwareInterface
 {
     /**
+     * Logger instance
+     */
+    logger?: LoggerInterface;
+
+    /**
      * Sets a logger instance in objet/class
      *
      * @param {LoggerInterface} logger

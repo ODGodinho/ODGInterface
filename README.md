@@ -34,6 +34,9 @@
 - [📰 Usage](#-usage)
   - [🙈 Exception](#-exception)
   - [🔐 Implementation](#-implementation)
+- [🍰 Free Sample](#-free-sample)
+  - [🔉 Class Aware Log](#-class-aware-log)
+  - [👀 Create Logger Class](#-create-logger-class)
 - [💻 Prepare to develop](#-prepare-to-develop)
   - [📍 Start Project](#-start-project)
   - [📨 Build and Run](#-build-and-run)
@@ -87,6 +90,62 @@ InvalidArgumentException dispatch if send invalid arguments
 - LoggerInterface for create a logger class
 - AbstractLogger Abstract class to logger implements only log function
 - NullLogger Generic logger without action
+
+### 🍰 Free Sample
+
+#### 🔉 Class Aware Log
+
+If you class dependencies LoggerInstance use interface `LoggerAwareInterface`
+
+> if you prefer you can depend on the log class in your constructor
+
+```typescript
+import { LoggerAwareInterface, LoggerInterface } from "@odg/log";
+
+export class LoggerAwareExample implements LoggerAwareInterface {
+
+    private logger?: LoggerInterface;
+
+    public setLogger(logger: LoggerInterface): void {
+        this.logger = logger;
+    }
+
+    public runExampleClass(): void {
+        try {
+            // Anything code
+        } catch (error) {
+            this.logger?.debug(error);
+        }
+    }
+
+}
+```
+
+#### 👀 Create Logger Class
+
+```typescript
+/**
+ * This Example Logger using console.log
+ *
+ * @author Dragons Gamers <https://github.com/ODGodinho>
+ */
+export class ConsoleLogger extends AbstractLogger {
+
+    /**
+     * Logs with an arbitrary level.
+     *
+     * @param {LogLevel} level Log level
+     * @param {unknown} message Message Log
+     * @param {TContext} context Context Message replace
+     *
+     * @returns {Promise<void>}
+     */
+    public async log(level: LogLevel, message: unknown, context?: TContext): Promise<void> {
+        return console.log(`Level: ${level} >> ${String(message)}`, context);
+    }
+
+}
+```
 
 ## 💻 Prepare To Develop
 
