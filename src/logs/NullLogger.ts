@@ -1,5 +1,5 @@
 import { type LogLevel } from "../index";
-import { type TContext } from "../Interfaces/LoggerInterface";
+import { type ContextTypo } from "../Interfaces/LoggerInterface";
 
 import { AbstractLogger } from "./AbstractLogger";
 
@@ -20,11 +20,11 @@ class NullLogger extends AbstractLogger {
      *
      * @param {LogLevel} _level Log level
      * @param {unknown} _message Message Log
-     * @param {TContext} context Context Message replace
+     * @param {ContextTypo} context Context Message replace
      *
      * @returns {Promise<void>}
      */
-    public async log(_level: LogLevel, _message: unknown, context?: TContext): Promise<void> {
+    public async log(_level: LogLevel, _message: unknown, context?: ContextTypo): Promise<void> {
         return void context;
     }
 
