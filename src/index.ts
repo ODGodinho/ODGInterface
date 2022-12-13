@@ -1,10 +1,10 @@
 export { InvalidArgumentException } from "./Exceptions/InvalidArgumentException";
 
-export { LoggerAwareInterface } from "./Interfaces/LoggerAwareInterface";
+export type { LoggerAwareInterface } from "./Interfaces/LoggerAwareInterface";
 
-export { LoggerInterface } from "./Interfaces/LoggerInterface";
+export type { LoggerInterface } from "./Interfaces/LoggerInterface";
 
-export { LogLevel, LogLevelType } from "./Interfaces/LogLevel";
+export { LogLevel, type LogLevelType } from "./Interfaces/LogLevel";
 
 export { AbstractLogger } from "./logs/AbstractLogger";
 

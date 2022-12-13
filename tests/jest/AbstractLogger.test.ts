@@ -1,4 +1,4 @@
-import { LogLevel, LogLevelType, NullLogger } from "../../src/index";
+import { LogLevel, type LogLevelType, NullLogger } from "../../src/index";
 
 describe("AbstractLogger.test.ts", () => {
     const logger = new NullLogger();
@@ -7,7 +7,7 @@ describe("AbstractLogger.test.ts", () => {
         const typeCast = type as LogLevelType;
         test(`Test Log ${typeCast}`, async () => {
             const functionName = LogLevel[typeCast];
-            expect(await logger[functionName]("anything")).toBeUndefined();
+            await expect(logger[functionName]("anything")).resolves.toBeUndefined();
         });
     }
 });

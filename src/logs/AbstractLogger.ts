@@ -1,4 +1,4 @@
-import { LoggerInterface, LogLevel } from "../index";
+import { type LoggerInterface, LogLevel } from "../index";
 
 /**
  * Simple logger implementation
@@ -16,7 +16,7 @@ abstract class AbstractLogger implements LoggerInterface {
      * @returns {Promise<void>}
      */
     public async emergency(message: unknown, context?: Record<string, string>): Promise<void> {
-        this.log(LogLevel.EMERGENCY, message, context);
+        return this.log(LogLevel.EMERGENCY, message, context);
     }
 
     /**
@@ -31,7 +31,7 @@ abstract class AbstractLogger implements LoggerInterface {
      * @returns {Promise<void>}
      */
     public async alert(message: unknown, context?: Record<string, string>): Promise<void> {
-        this.log(LogLevel.ALERT, message, context);
+        return this.log(LogLevel.ALERT, message, context);
     }
 
     /**
@@ -45,7 +45,7 @@ abstract class AbstractLogger implements LoggerInterface {
      * @returns {Promise<void>}
      */
     public async critical(message: unknown, context?: Record<string, string>): Promise<void> {
-        this.log(LogLevel.CRITICAL, message, context);
+        return this.log(LogLevel.CRITICAL, message, context);
     }
 
     /**
@@ -58,7 +58,7 @@ abstract class AbstractLogger implements LoggerInterface {
      * @returns {Promise<void>}
      */
     public async error(message: unknown, context?: Record<string, string>): Promise<void> {
-        this.log(LogLevel.ERROR, message, context);
+        return this.log(LogLevel.ERROR, message, context);
     }
 
     /**
@@ -73,7 +73,7 @@ abstract class AbstractLogger implements LoggerInterface {
      * @returns {Promise<void>}
      */
     public async warning(message: unknown, context?: Record<string, string>): Promise<void> {
-        this.log(LogLevel.WARNING, message, context);
+        return this.log(LogLevel.WARNING, message, context);
     }
 
     /**
@@ -85,7 +85,7 @@ abstract class AbstractLogger implements LoggerInterface {
      * @returns {Promise<void>}
      */
     public async notice(message: unknown, context?: Record<string, string>): Promise<void> {
-        this.log(LogLevel.NOTICE, message, context);
+        return this.log(LogLevel.NOTICE, message, context);
     }
 
     /**
@@ -99,7 +99,7 @@ abstract class AbstractLogger implements LoggerInterface {
      * @returns {Promise<void>}
      */
     public async info(message: unknown, context?: Record<string, string>): Promise<void> {
-        this.log(LogLevel.INFO, message, context);
+        return this.log(LogLevel.INFO, message, context);
     }
 
     /**
@@ -111,7 +111,7 @@ abstract class AbstractLogger implements LoggerInterface {
      * @returns {Promise<void>}
      */
     public async debug(message: unknown, context?: Record<string, string>): Promise<void> {
-        this.log(LogLevel.DEBUG, message, context);
+        return this.log(LogLevel.DEBUG, message, context);
     }
 
     /**

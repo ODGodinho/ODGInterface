@@ -1,12 +1,12 @@
-import { LoggerInterface } from "./LoggerInterface";
+import { type LoggerInterface } from "./LoggerInterface";
 
 /**
  * Describes a logger-aware instance.
  *
  * @author Dragons Gamers <https://github.com/ODGodinho>
  */
-interface LoggerAwareInterface
-{
+interface LoggerAwareInterface {
+
     /**
      * Logger instance
      */
@@ -21,4 +21,4 @@ interface LoggerAwareInterface
     setLogger(logger: LoggerInterface): void;
 }
 
-export { LoggerAwareInterface };
+export type { LoggerAwareInterface };

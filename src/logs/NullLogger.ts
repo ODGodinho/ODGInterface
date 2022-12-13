@@ -1,5 +1,5 @@
-import { LogLevel } from "../index";
-import { TContext } from "../Interfaces/LoggerInterface";
+import { type LogLevel } from "../index";
+import { type TContext } from "../Interfaces/LoggerInterface";
 
 import { AbstractLogger } from "./AbstractLogger";
 

@@ -1,11 +1,11 @@
-import { LogLevel } from "./LogLevel";
+import { type LogLevel } from "./LogLevel";
 
 /**
  * Content type in context
  *
  * @author Dragons Gamers <https://github.com/ODGodinho>
  */
-type TContext = Record<string, string> | undefined;
+type ContextTypo = Record<string, string> | undefined;
 
 /**
  * Describes a logger instance.
@@ -17,17 +17,17 @@ type TContext = Record<string, string> | undefined;
  *
  * @author Dragons Gamers <https://github.com/ODGodinho>
  */
-interface LoggerInterface
-{
+interface LoggerInterface {
+
     /**
      * System is unusable.
      *
      * @param {unknown} message Message Log
-     * @param {TContext | undefined} context Context Message replace
+     * @param {ContextTypo | undefined} context Context Message replace
      *
      * @returns {Promise<void>}
      */
-    emergency(message: unknown, context?: TContext): Promise<void>;
+    emergency(message: unknown, context?: ContextTypo): Promise<void>;
 
     /**
      * Action must be taken immediately.
@@ -36,11 +36,11 @@ interface LoggerInterface
      * trigger the SMS alerts and wake you up.
      *
      * @param {unknown} message Message Log
-     * @param {TContext | undefined} context Context Message replace
+     * @param {ContextTypo | undefined} context Context Message replace
      *
      * @returns {Promise<void>}
      */
-    alert(message: unknown, context?: TContext): Promise<void>;
+    alert(message: unknown, context?: ContextTypo): Promise<void>;
 
     /**
      * Critical conditions.
@@ -48,22 +48,22 @@ interface LoggerInterface
      * Example: Application component unavailable, unexpected exception.
      *
      * @param {unknown} message Message Log
-     * @param {TContext | undefined} context Context Message replace
+     * @param {ContextTypo | undefined} context Context Message replace
      *
      * @returns {Promise<void>}
      */
-    critical(message: unknown, context?: TContext): Promise<void>;
+    critical(message: unknown, context?: ContextTypo): Promise<void>;
 
     /**
      * Runtime errors that do not require immediate action but should typically
      * be logged and monitored.
      *
      * @param {unknown} message Message Log
-     * @param {TContext | undefined} context Context Message replace
+     * @param {ContextTypo | undefined} context Context Message replace
      *
      * @returns {Promise<void>}
      */
-    error(message: unknown, context?: TContext): Promise<void>;
+    error(message: unknown, context?: ContextTypo): Promise<void>;
 
     /**
      * Exceptional occurrences that are not errors.
@@ -72,21 +72,21 @@ interface LoggerInterface
      * that are not necessarily wrong.
      *
      * @param {unknown} message Message Log
-     * @param {TContext | undefined} context Context Message replace
+     * @param {ContextTypo | undefined} context Context Message replace
      *
      * @returns {Promise<void>}
      */
-    warning(message: unknown, context?: TContext): Promise<void>;
+    warning(message: unknown, context?: ContextTypo): Promise<void>;
 
     /**
      * Normal but significant events.
      *
      * @param {unknown} message Message Log
-     * @param {TContext | undefined} context Context Message replace
+     * @param {ContextTypo | undefined} context Context Message replace
      *
      * @returns {Promise<void>}
      */
-    notice(message: unknown, context?: TContext): Promise<void>;
+    notice(message: unknown, context?: ContextTypo): Promise<void>;
 
     /**
      * Interesting events.
@@ -94,32 +94,32 @@ interface LoggerInterface
      * Example: User logs in, SQL logs.
      *
      * @param {unknown} message Message Log
-     * @param {TContext | undefined} context Context Message replace
+     * @param {ContextTypo | undefined} context Context Message replace
      *
      * @returns {Promise<void>}
      */
-    info(message: unknown, context?: TContext): Promise<void>;
+    info(message: unknown, context?: ContextTypo): Promise<void>;
 
     /**
      * Detailed debug information.
      *
      * @param {unknown} message Message Log
-     * @param {TContext | undefined} context Context Message replace
+     * @param {ContextTypo | undefined} context Context Message replace
      *
      * @returns {Promise<void>}
      */
-    debug(message: unknown, context?: TContext): Promise<void>;
+    debug(message: unknown, context?: ContextTypo): Promise<void>;
 
     /**
      * Logs with an arbitrary level.
      *
      * @param {LogLevel} level Log level
      * @param {unknown} message Message Log
-     * @param {TContext | undefined} context Context Message replace
+     * @param {ContextTypo | undefined} context Context Message replace
      *
      * @returns {Promise<void>}
      */
-    log(level: LogLevel, message: unknown, context?: TContext): Promise<void>;
+    log(level: LogLevel, message: unknown, context?: ContextTypo): Promise<void>;
 }
 
-export { LoggerInterface, TContext };
+export type { LoggerInterface, ContextTypo };

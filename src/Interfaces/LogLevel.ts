@@ -16,4 +16,4 @@ enum LogLevel {
 
 type LogLevelType = keyof typeof LogLevel;
 
-export { LogLevel, LogLevelType };
+export { LogLevel, type LogLevelType };
