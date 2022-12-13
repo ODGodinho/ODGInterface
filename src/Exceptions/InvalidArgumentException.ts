@@ -1,4 +1,6 @@
-class InvalidArgumentException extends Error {
+import { Exception } from "@odg/exception";
+
+class InvalidArgumentException extends Exception {
 
 }
 

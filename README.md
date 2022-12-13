@@ -15,12 +15,14 @@
 
 <p align="center">
 
+[![codecov](https://codecov.io/gh/ODGodinho/ODGLog/branch/main/graph/badge.svg?token=JCLIEK2OFN)](https://codecov.io/gh/ODGodinho/ODGLog)
 [![Stargazers](https://img.shields.io/github/stars/ODGodinho/ODGLog?color=F430A4)](https://github.com/ODGodinho/ODGLog/stargazers)
 [![Made by ODGodinho](https://img.shields.io/badge/made%20by-ODGodinho-%2304A361)](https://www.linkedin.com/in/victor-alves-odgodinho/)
 [![Forks](https://img.shields.io/github/forks/ODGodinho/ODGLog?color=CD4D34)](https://github.com/ODGodinho/ODGLog/network/members)
 ![Repository size](https://img.shields.io/github/repo-size/ODGodinho/ODGLog)
 [![GitHub last commit](https://img.shields.io/github/last-commit/ODGodinho/ODGLog)](https://github.com/ODGodinho/ODGLog/commits/master)
 [![License](https://img.shields.io/badge/license-MIT-brightgreen)](https://opensource.org/licenses/MIT)
+[![StyleCI](https://github.styleci.io/repos/567544983/shield?branch=main)](https://github.styleci.io/repos/567544983?branch=main)
 
 </p>
 
@@ -63,6 +65,7 @@
 - [Node.js](https://nodejs.org) 16 or later
 - [Yarn](https://yarnpkg.com/) Optional/Recommended
 - [ODG TsConfig](https://github.com/ODGodinho/tsconfig) Last Version
+- [ODG Exception](https://github.com/ODGodinho/ODGException)
 
 ## ⏩ Get Started
 
