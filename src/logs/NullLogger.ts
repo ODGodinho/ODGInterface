@@ -13,7 +13,7 @@ import { AbstractLogger } from "./AbstractLogger";
  *
  * @author Dragons Gamers <https://github.com/ODGodinho>
  */
-class NullLogger extends AbstractLogger {
+export class NullLogger extends AbstractLogger {
 
     /**
      * Logs with an arbitrary level.
@@ -29,5 +29,3 @@ class NullLogger extends AbstractLogger {
     }
 
 }
-
-export { NullLogger };

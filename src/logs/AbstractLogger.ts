@@ -5,7 +5,7 @@ import { type LoggerInterface, LogLevel } from "../index";
  *
  * @author Dragons Gamers <https://github.com/ODGodinho>
  */
-abstract class AbstractLogger implements LoggerInterface {
+export abstract class AbstractLogger implements LoggerInterface {
 
     /**
      * System is unusable.
@@ -126,5 +126,3 @@ abstract class AbstractLogger implements LoggerInterface {
     public abstract log(level: LogLevel, message: unknown, context?: Record<string, string>): Promise<void>;
 
 }
-
-export { AbstractLogger };
