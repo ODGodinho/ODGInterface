@@ -1,4 +1,5 @@
-import { type LoggerInterface, LogLevel } from "../index";
+import { type LoggerInterface, LogLevel, type ContextTypo } from "../index";
+import { type LoggerParserInterface, type LoggerPluginInterface } from "../Interfaces/LoggerPluginInterface";
 
 /**
  * Simple logger implementation
@@ -6,6 +7,15 @@ import { type LoggerInterface, LogLevel } from "../index";
  * @author Dragons Gamers <https://github.com/ODGodinho>
  */
 export abstract class AbstractLogger implements LoggerInterface {
+
+    /**
+     * Plugins List
+     *
+     * @protected
+     * @type {LoggerPluginInterface[]}
+     * @memberof AbstractLogger
+     */
+    protected readonly plugins: LoggerPluginInterface[] = [];
 
     /**
      * System is unusable.
@@ -112,6 +122,50 @@ export abstract class AbstractLogger implements LoggerInterface {
      */
     public async debug(message: unknown, context?: Record<string, string>): Promise<void> {
         return this.log(LogLevel.DEBUG, message, context);
+    }
+
+    /**
+     * Register Plugin Logger
+     *
+     * @param {LoggerPluginInterface} plugin Plugin Class
+     * @memberof AbstractLogger
+     */
+    public use(plugin: LoggerPluginInterface): void {
+        this.plugins.push(plugin);
+    }
+
+    /**
+     * Parser Plugin Logger
+     *
+     * @param {LogLevel} level Logger
+     * @param {unknown} message Message Logger
+     * @param {ContextTypo} [context] Context
+     * @returns {Promise<LoggerParserInterface>}
+     * @memberof AbstractLogger
+     */
+    public async parser(
+        level: LogLevel,
+        message: unknown,
+        context?: ContextTypo,
+    ): Promise<LoggerParserInterface> {
+        let newParser: LoggerParserInterface = {
+            originalMessage: message,
+            level: level,
+            message: message,
+            context: context,
+        };
+
+        for (const plugin of this.plugins) {
+            const parser = await plugin.parser(newParser);
+            newParser = {
+                originalMessage: message,
+                level: parser.level,
+                message: parser.message,
+                context: parser.context,
+            };
+        }
+
+        return newParser;
     }
 
     /**

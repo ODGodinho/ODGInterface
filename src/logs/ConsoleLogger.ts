@@ -24,26 +24,26 @@ export class ConsoleLogger extends AbstractLogger {
      *
      * @param {LogLevel} level Log level
      * @param {unknown} message Message Log
-     * @param {ContextTypo} _context Context Message replace
+     * @param {ContextTypo} context Context Message replace
      *
      * @returns {Promise<void>}
      */
-    public async log(level: LogLevel, message: unknown, _context?: ContextTypo): Promise<void> {
-        console.log(this.getLevel(level), util.format(message));
+    public async log(level: LogLevel, message: unknown, context?: ContextTypo): Promise<void> {
+        const log = await this.parser(level, message, context);
+        console.log(this.getLevel(log.level), util.format(log.message));
     }
 
     private getLevel(level: LogLevel): string {
-        const message = `${level}:`;
-
+        const message = `  ${level}:  `;
         switch (level) {
         case LogLevel.EMERGENCY:
-            return chalk.bgBlack.bold.white(message);
+            return chalk.bgBlack.bold.red(message);
         case LogLevel.ALERT:
-            return chalk.bgHex("#FFCBCD").bold.white(message);
+            return chalk.bgHex("#FFFCCD").bold.white(message);
         case LogLevel.CRITICAL:
-            return chalk.bgRedBright.bold.white(message);
+            return chalk.bgHex("#990033").white.bold(message);
         case LogLevel.ERROR:
-            return chalk.bgWhite.red(message);
+            return chalk.bgRed.white.bold(message);
         case LogLevel.WARNING:
             return chalk.bgYellow.white(message);
         case LogLevel.NOTICE:
@@ -53,7 +53,7 @@ export class ConsoleLogger extends AbstractLogger {
         case LogLevel.DEBUG:
             return chalk.bgMagenta.white(message);
         default:
-            return chalk.bgGray.white("UNKNOWN");
+            return chalk.bgGray.white("  unknown:  ");
         }
     }
 
