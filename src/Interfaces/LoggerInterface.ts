@@ -1,5 +1,6 @@
-import { LoggerPluginInterface } from ".";
 import { type LogLevel } from "./LogLevel";
+
+import { type LoggerPluginInterface } from ".";
 
 /**
  * Content type in context
