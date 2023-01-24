@@ -1,3 +1,4 @@
+import { LoggerPluginInterface } from ".";
 import { type LogLevel } from "./LogLevel";
 
 /**
@@ -120,6 +121,15 @@ interface LoggerInterface {
      * @returns {Promise<void>}
      */
     log(level: LogLevel, message: unknown, context?: ContextTypo): Promise<void>;
+
+    /**
+     * Use Plugins in logger class
+     *
+     * @param {LoggerPluginInterface} plugin Plugin to Load
+     *
+     * @returns {Promise<void>}
+     */
+    use(plugin: LoggerPluginInterface): void;
 }
 
 export type { LoggerInterface, ContextTypo };
