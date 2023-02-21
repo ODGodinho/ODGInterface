@@ -30,6 +30,7 @@ export class ConsoleLogger extends AbstractLogger {
      */
     public async log(level: LogLevel, message: unknown, context?: ContextTypo): Promise<void> {
         const log = await this.parser(level, message, context);
+
         console.log(this.getLevel(log.level), util.format(log.message));
     }
 

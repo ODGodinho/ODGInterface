@@ -144,7 +144,9 @@ export class ConsoleLogger extends AbstractLogger {
      * @returns {Promise<void>}
      */
     public async log(level: LogLevel, message: unknown, context?: TContext): Promise<void> {
-        return console.log(`Level: ${level} >> ${String(message)}`, context);
+        const log = await this.parser(level, message, context); // Use this for plugins load
+
+        return console.log(`Level: ${log.level} >> ${String(log.message)}`, log.context);
     }
 
 }
