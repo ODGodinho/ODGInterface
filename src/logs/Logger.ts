@@ -1,6 +1,6 @@
 import {
     type LoggerParserInterface, type ContextType, type LoggerPluginInterface, type LogLevel, type LoggerInterface,
-} from "src/Interfaces";
+} from "../Interfaces";
 
 import { AbstractLogger } from "./AbstractLogger";
 
