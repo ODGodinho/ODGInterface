@@ -3,7 +3,7 @@ import util from "node:util";
 import chalk from "chalk";
 
 import { LogLevel } from "../index";
-import { type ContextTypo } from "../Interfaces/LoggerInterface";
+import { type ContextType } from "../Interfaces/LoggerInterface";
 
 import { AbstractLogger } from "./AbstractLogger";
 
@@ -24,14 +24,11 @@ export class ConsoleLogger extends AbstractLogger {
      *
      * @param {LogLevel} level Log level
      * @param {unknown} message Message Log
-     * @param {ContextTypo} context Context Message replace
-     *
+     * @param {ContextType | undefined} _context Context Message replace
      * @returns {Promise<void>}
      */
-    public async log(level: LogLevel, message: unknown, context?: ContextTypo): Promise<void> {
-        const log = await this.parser(level, message, context);
-
-        console.log(this.getLevel(log.level), util.format(log.message));
+    public async log(level: LogLevel, message: unknown, _context?: ContextType): Promise<void> {
+        console.log(this.getLevel(level), util.format(message));
     }
 
     private getLevel(level: LogLevel): string {
