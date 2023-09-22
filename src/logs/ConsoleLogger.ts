@@ -3,12 +3,11 @@ import util from "node:util";
 import { JSONLogger } from "@odg/json-log";
 import chalk from "chalk";
 
-import { StringMessageFormatter } from "src/logs/StringMessageFormater";
-
 import { LogLevel } from "../index";
 import { type ContextType } from "../Interfaces/LoggerInterface";
 
 import { AbstractLogger } from "./AbstractLogger";
+import { StringMessageFormatter } from "./StringMessageFormater";
 
 /**
  * This Logger can be used to avoid conditional log calls.
