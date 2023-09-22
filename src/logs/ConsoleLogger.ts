@@ -1,6 +1,9 @@
 import util from "node:util";
 
+import { JSONLogger } from "@odg/json-log";
 import chalk from "chalk";
+
+import { StringMessageFormatter } from "src/logs/StringMessageFormater";
 
 import { LogLevel } from "../index";
 import { type ContextType } from "../Interfaces/LoggerInterface";
@@ -28,7 +31,12 @@ export class ConsoleLogger extends AbstractLogger {
      * @returns {Promise<void>}
      */
     public async log(level: LogLevel, message: unknown, _context?: ContextType): Promise<void> {
-        console.log(this.getLevel(level), util.format(message));
+        let newMessage = util.format(message);
+        if (message instanceof JSONLogger) {
+            newMessage = new StringMessageFormatter().format(message);
+        }
+
+        console.log(this.getLevel(level), newMessage);
     }
 
     private getLevel(level: LogLevel): string {

@@ -76,6 +76,7 @@
     },
     "dependencies": {
         "@odg/exception": "*",
+        "@odg/json-log": "*",
         "chalk": "^4"
     }
 }
