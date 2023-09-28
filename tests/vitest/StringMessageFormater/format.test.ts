@@ -1,5 +1,3 @@
-import { describe } from "node:test";
-
 import { Exception } from "@odg/exception";
 import { JSONLogger } from "@odg/json-log";
 
@@ -12,18 +10,13 @@ describe("Test request message", () => {
     const localUrl = "http://localhost:3000";
 
     test("Teste requester message", async () => {
-        const message = new JSONLogger(
-            LogLevel.INFO,
-            "index",
-            "instance",
-            "message",
-            new Date(),
-            undefined,
-            undefined,
-            undefined,
-            undefined,
-            undefined,
-            {
+        const message = new JSONLogger({
+            type: LogLevel.INFO,
+            index: "index",
+            instance: "instance",
+            message: "message",
+            createdAt: new Date(),
+            request: {
                 url: localUrl,
                 response: {
                     status: 200,
@@ -31,24 +24,19 @@ describe("Test request message", () => {
                     headers: {},
                 },
             },
-        );
+        });
 
         await expect(logger.info(message)).resolves.toBeUndefined();
     });
 
     test("Teste requester baseUrl message", async () => {
-        const message = new JSONLogger(
-            LogLevel.INFO,
-            "index",
-            "instance",
-            "message",
-            new Date(),
-            undefined,
-            undefined,
-            undefined,
-            undefined,
-            undefined,
-            {
+        const message = new JSONLogger({
+            type: LogLevel.INFO,
+            index: "index",
+            instance: "instance",
+            message: "message",
+            createdAt: new Date(),
+            request: {
                 baseURL: localUrl,
                 response: {
                     status: 200,
@@ -56,71 +44,63 @@ describe("Test request message", () => {
                     headers: {},
                 },
             },
-        );
+        });
 
         await expect(logger.info(message)).resolves.toBeUndefined();
     });
 
     test("Teste requester without response", async () => {
-        const message = new JSONLogger(
-            LogLevel.INFO,
-            "index",
-            "instance",
-            "message",
-            new Date(),
-            undefined,
-            undefined,
-            undefined,
-            undefined,
-            undefined,
-            {
+        const message = new JSONLogger({
+            type: LogLevel.INFO,
+            index: "index",
+            instance: "instance",
+            message: "message",
+            createdAt: new Date(),
+            request: {
                 url: localUrl,
             },
-        );
+        });
 
         await expect(logger.info(message)).resolves.toBeUndefined();
     });
 
     test("Teste exception", async () => {
-        const message = new JSONLogger(
-            LogLevel.INFO,
-            "index",
-            "instance",
-            "message",
-            new Date(),
-            undefined,
-            undefined,
-            undefined,
-            {
+        const message = new JSONLogger({
+            type: LogLevel.INFO,
+            index: "index",
+            instance: "instance",
+            message: "message",
+            createdAt: new Date(),
+            exception: {
                 type: "Exception",
                 message: "Message",
                 stack: new Exception("example").stack,
             },
-        );
+        });
 
         await expect(logger.error(message)).resolves.toBeUndefined();
     });
 
     test("Teste only message", async () => {
-        const message = new JSONLogger(
-            LogLevel.INFO,
-            "index",
-            "instance",
-            "message",
-            new Date(),
-        );
+        const message = new JSONLogger({
+            type: LogLevel.INFO,
+            index: "index",
+            instance: "instance",
+            message: "message",
+            createdAt: new Date(),
+        });
 
         await expect(logger.info(message)).resolves.toBeUndefined();
     });
 
     test("Teste without message", async () => {
-        const message = new JSONLogger(
-            LogLevel.INFO,
-            "index",
-            "instance",
-            "",
-            new Date(),
-        );
+        const message = new JSONLogger({
+            type: LogLevel.INFO,
+            index: "index",
+            instance: "instance",
+            message: "",
+            createdAt: new Date(),
+        });
 
         await expect(logger.info(message)).resolves.toBeUndefined();
     });

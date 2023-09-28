@@ -1,11 +1,11 @@
 import util from "node:util";
 
-import { type JSONLogger } from "@odg/json-log";
+import { type JSONLoggerString, type JSONLogger } from "@odg/json-log";
 import chalk from "chalk";
 
 export class StringMessageFormatter {
 
-    public format(message: JSONLogger): string {
+    public format(message: JSONLogger | JSONLoggerString): string {
         if (message.request) return this.formatRequester(message);
 
         if (message.exception) {
@@ -15,7 +15,7 @@ export class StringMessageFormatter {
         return util.format(message.message || message);
     }
 
-    private formatRequester(message: JSONLogger): string {
+    private formatRequester(message: JSONLogger | JSONLoggerString): string {
         const requester = message.request!;
         const url = chalk.white(`${requester.baseURL! || ""}${requester.url! || ""}`);
         const statusCode = message.request?.response?.status;
