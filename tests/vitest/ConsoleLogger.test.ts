@@ -1,10 +1,12 @@
+import { vi } from "vitest";
+
 import { LogLevel, type LogLevelType, ConsoleLogger } from "../../src/index";
 
 import { TestPluginLogger } from "./TestPluginLogger";
 
 describe("ConsoleLogger.test.ts", () => {
     const logger = new ConsoleLogger();
-    const spy = jest.spyOn(console, "log").mockImplementation(() => void 0);
+    const spy = vi.spyOn(console, "log").mockImplementation(() => void 0);
 
     for (const type in LogLevel) {
         const typeCast = type as LogLevelType;

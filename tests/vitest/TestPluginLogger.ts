@@ -1,6 +1,6 @@
 import {
     type LoggerParserInterface, type LoggerPluginInterface,
-} from "../../src";
+} from "../../src/index";
 
 /**
  * Test Plugin Logger
