@@ -1,11 +1,13 @@
 import util from "node:util";
 
+import { JSONLogger, JSONLoggerString } from "@odg/json-log";
 import chalk from "chalk";
 
 import { LogLevel } from "../index";
-import { type ContextTypo } from "../Interfaces/LoggerInterface";
+import { type ContextType } from "../Interfaces/LoggerInterface";
 
 import { AbstractLogger } from "./AbstractLogger";
+import { StringMessageFormatter } from "./StringMessageFormater";
 
 /**
  * This Logger can be used to avoid conditional log calls.
@@ -24,14 +26,16 @@ export class ConsoleLogger extends AbstractLogger {
      *
      * @param {LogLevel} level Log level
      * @param {unknown} message Message Log
-     * @param {ContextTypo} context Context Message replace
-     *
+     * @param {ContextType | undefined} _context Context Message replace
      * @returns {Promise<void>}
      */
-    public async log(level: LogLevel, message: unknown, context?: ContextTypo): Promise<void> {
-        const log = await this.parser(level, message, context);
+    public async log(level: LogLevel, message: unknown, _context?: ContextType): Promise<void> {
+        let newMessage = util.format(message);
+        if (message instanceof JSONLogger || message instanceof JSONLoggerString) {
+            newMessage = new StringMessageFormatter().format(message);
+        }
 
-        console.log(this.getLevel(log.level), util.format(log.message));
+        console.log(this.getLevel(level), newMessage);
     }
 
     private getLevel(level: LogLevel): string {

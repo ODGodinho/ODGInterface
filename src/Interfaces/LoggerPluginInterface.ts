@@ -1,4 +1,4 @@
-import { type ContextTypo, type LogLevel } from ".";
+import { type ContextType, type LogLevel } from ".";
 
 /**
  * Logger Plugin return parser
@@ -6,10 +6,10 @@ import { type ContextTypo, type LogLevel } from ".";
  * @interface LoggerParserInterface
  */
 export interface LoggerParserInterface {
-    readonly originalMessage: unknown;
+    readonly original: Omit<LoggerParserInterface, "original">;
     level: LogLevel;
     message: unknown;
-    context?: ContextTypo;
+    context?: ContextType;
 }
 
 /**
@@ -23,8 +23,7 @@ export interface LoggerPluginInterface {
      * Parser Logger on called
      *
      * @param {LoggerParserInterface} data Received LogLevel
-     * @returns {Promise<LoggerParserInterface>}
-     * @memberof LoggerPluginInterface
+     * @returns {Promise<Omit<LoggerParserInterface, "original">>}
      */
-    parser(data: LoggerParserInterface): Promise<LoggerParserInterface>;
+    parser(data: LoggerParserInterface): Promise<Omit<LoggerParserInterface, "original">>;
 }

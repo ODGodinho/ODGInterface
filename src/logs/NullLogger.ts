@@ -1,6 +1,3 @@
-import { type LogLevel } from "../index";
-import { type ContextTypo } from "../Interfaces/LoggerInterface";
-
 import { AbstractLogger } from "./AbstractLogger";
 
 /**
@@ -18,14 +15,10 @@ export class NullLogger extends AbstractLogger {
     /**
      * Logs with an arbitrary level.
      *
-     * @param {LogLevel} _level Log level
-     * @param {unknown} _message Message Log
-     * @param {ContextTypo} context Context Message replace
-     *
      * @returns {Promise<void>}
      */
-    public async log(_level: LogLevel, _message: unknown, context?: ContextTypo): Promise<void> {
-        return void context;
+    public async log(): Promise<void> {
+        // Not have action
     }
 
 }

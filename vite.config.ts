@@ -14,10 +14,6 @@ const vite = defineConfig({
             exclude: [
                 "src/index.ts",
                 "src/index.js",
-                "src/Pages/**/*.ts",
-                "src/Handlers/**/*.ts",
-                "src/app/Services/**/*.ts",
-                "src/app/Listeners/**/*.ts",
             ],
         },
         setupFiles: [
